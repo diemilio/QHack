@@ -16,7 +16,13 @@ def triple_excitation_matrix(gamma):
     """
 
     # QHACK #
-
+    g3 = np.zeros((int(2**6),int(2**6)))
+    np.fill_diagonal(g3,1)
+    g3[7,7] = np.cos(gamma/2)
+    g3[56,7] = np.sin(gamma/2)
+    g3[7,56] = -np.sin(gamma/2)
+    g3[56,56] = np.cos(gamma/2)
+    return g3
     # QHACK #
 
 
@@ -36,7 +42,13 @@ def circuit(angles):
     """
 
     # QHACK #
-
+    state = np.zeros(64)
+    state[56] = 1
+    qml.MottonenStatePreparation(state_vector=state, wires=range(NUM_WIRES))
+    U = triple_excitation_matrix(angles[2])
+    qml.SingleExcitation(angles[0], wires=[0, 5])
+    qml.DoubleExcitation(angles[1], wires=[0, 1, 4, 5])
+    qml.QubitUnitary(U, wires=range(NUM_WIRES))
     # QHACK #
 
     return qml.probs(wires=range(NUM_WIRES))

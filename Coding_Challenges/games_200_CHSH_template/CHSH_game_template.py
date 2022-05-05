@@ -18,7 +18,8 @@ def prepare_entangled(alpha, beta):
     """
 
     # QHACK #
-
+    state = np.array([alpha,0,0,beta])/np.sqrt(alpha**2+beta**2)
+    qml.MottonenStatePreparation(state_vector=state, wires=range(2))
     # QHACK #
 
 @qml.qnode(dev)
@@ -42,7 +43,14 @@ def chsh_circuit(theta_A0, theta_A1, theta_B0, theta_B1, x, y, alpha, beta):
     prepare_entangled(alpha, beta)
 
     # QHACK #
-
+    if x == 0:
+        qml.RY(-2*theta_A0,wires=0)
+    else:
+        qml.RY(-2*theta_A1,wires=0)
+    if y == 0:
+        qml.RY(-2*theta_B0,wires=1)
+    else:
+        qml.RY(-2*theta_B1,wires=1)
     # QHACK #
 
     return qml.probs(wires=[0, 1])
@@ -61,7 +69,16 @@ def winning_prob(params, alpha, beta):
     """
 
     # QHACK #
+    theta_A0, theta_A1, theta_B0, theta_B1 = params
+    prob00 = chsh_circuit(theta_A0, theta_A1, theta_B0, theta_B1, 0, 0, alpha, beta)
+    prob01 = chsh_circuit(theta_A0, theta_A1, theta_B0, theta_B1, 0, 1, alpha, beta)
+    prob10 = chsh_circuit(theta_A0, theta_A1, theta_B0, theta_B1, 1, 0, alpha, beta)
+    prob11 = chsh_circuit(theta_A0, theta_A1, theta_B0, theta_B1, 1, 1, alpha, beta)
 
+    win_prob = 1/4*(prob00[0]+prob00[3]) + 1/4*(prob01[0]+prob01[3]) +\
+               1/4*(prob10[0]+prob10[3])+ 1/4*(prob11[1]+prob11[2])
+    
+    return win_prob
     # QHACK #
     
 
@@ -82,21 +99,25 @@ def optimize(alpha, beta):
     # QHACK #
 
     #Initialize parameters, choose an optimization method and number of steps
-    init_params = 
-    opt =
-    steps =
+    init_params = np.zeros(4, requires_grad=True)
+    opt = qml.AdamOptimizer(stepsize=0.8)
+    steps = 10
 
     # QHACK #
     
     # set the initial parameter values
     params = init_params
-
+    
+    def error(params):
+        prob = winning_prob(params, alpha, beta)
+        return abs(1-prob)
+    
     for i in range(steps):
         # update the circuit parameters 
         # QHACK #
-
-        params = 
-
+        for epoch in range(steps):
+            params = opt.step(error, params)
+            params = np.clip(opt.step(error, params), -2*np.pi, 2*np.pi)
         # QHACK #
 
     return winning_prob(params, alpha, beta)

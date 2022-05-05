@@ -15,9 +15,58 @@ def deutsch_jozsa(fs):
     Returns:
         - (str) : "4 same" or "2 and 2"
     """
-
+    
     # QHACK #
+    all_bits = 5
+    oracle_wires = range(2,5)
+    dev = qml.device("default.qubit", wires=all_bits)
 
+    ctrl_f1 = qml.ctrl(f1, control=[0,1])
+    ctrl_f2 = qml.ctrl(f2, control=[0,1])
+    ctrl_f3 = qml.ctrl(f3, control=[0,1])
+    ctrl_f4 = qml.ctrl(f4, control=[0,1])
+
+    @qml.qnode(dev)
+    def circuit():
+        qml.PauliX(wires=all_bits-1)
+        qml.Barrier(wires=range(all_bits))
+
+        for wire in range(all_bits):
+            qml.Hadamard(wires=wire)
+
+        qml.Barrier(wires=range(all_bits))
+        ctrl_f1(oracle_wires)
+
+        qml.Barrier(wires=range(all_bits))
+        qml.PauliX(wires=0)
+        ctrl_f2(oracle_wires)
+        qml.PauliX(wires=0)
+
+        qml.Barrier(wires=range(all_bits))
+        qml.PauliX(wires=1)
+        ctrl_f3(oracle_wires)
+        qml.PauliX(wires=1)
+
+        qml.Barrier(wires=range(all_bits))
+        qml.PauliX(wires=0)
+        qml.PauliX(wires=1)
+        ctrl_f4(oracle_wires)
+        qml.PauliX(wires=0)
+        qml.PauliX(wires=1)
+
+        qml.Barrier(wires=range(all_bits))
+        for wire in range(0,all_bits-1):
+            qml.Hadamard(wires=wire)
+
+        return qml.probs(wires=range(2,4))
+    
+    probs = circuit()
+    if np.isclose(probs[0],1) or np.isclose(probs[3],1):
+        return '4 same'
+    else:
+        return '2 and 2'
+    
+    return circuit()
     # QHACK #
 
 

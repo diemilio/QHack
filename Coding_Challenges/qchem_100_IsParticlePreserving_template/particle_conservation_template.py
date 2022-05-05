@@ -18,7 +18,8 @@ def binary_list(m, n):
 
     arr = []
     # QHACK #
-
+    arr = list(np.binary_repr(m, width=n))
+    arr = [int(i) for i in arr]
     # QHACK #
     return arr
 
@@ -37,7 +38,8 @@ def basis_states(n):
     arr = []
 
     # QHACK #
-
+    for i in range(2**n):
+        arr.append(binary_list(i,n))
     # QHACK #
 
     return arr
@@ -56,7 +58,14 @@ def is_particle_preserving(circuit, n):
     """
 
     # QHACK #
-
+    
+    for state in basis_states(n):
+        state_cnt = np.count_nonzero(state) # count of ones in input state
+        idxs = np.nonzero(circuit(state))   # indices of non-zero states in output
+        for i in idxs:
+            if state_cnt != np.count_nonzero(binary_list(i[0],n)):
+                return False
+    return True
     # QHACK #
 
 

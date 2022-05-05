@@ -29,7 +29,27 @@ def n_swaps(cnot):
     """
 
     # QHACK #
-
+    start,goal = cnot.wires
+    explored = []
+    queue = [[start]] #start
+    
+    if start == goal:
+        return
+    
+    while queue:
+        path = queue.pop(0)
+        node = path[-1]
+        
+        if node not in explored:
+            neighbours = graph[node]
+        
+            for neighbour in neighbours:
+                new_path = list(path)
+                new_path.append(neighbour)
+                queue.append(new_path)
+                if neighbour == goal:
+                    return 2*(len(new_path)-2)
+            explored.append(node)
     # QHACK #
 
 

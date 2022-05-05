@@ -23,7 +23,21 @@ def distance(A, B):
 
     # dev = qml.device("default.qubit", ...
     # @qml.qnode(dev)
+    dev = qml.device("default.qubit", wires=3)
+    @qml.qnode(dev)
+    @qml.transforms.merge_amplitude_embedding
+    def dist_cir():
+        qml.AmplitudeEmbedding(A,wires=2,normalize=True)
+        qml.AmplitudeEmbedding(B,wires=1,normalize=True)
+        qml.Hadamard(wires=0)
+        qml.CSWAP(wires=[0,1,2])
+        qml.Hadamard(wires=0)
+        return qml.probs(wires=0)
 
+    prob0 = dist_cir()[0]
+    dist = np.sqrt(2*(1-np.sqrt(2*prob0-1)))
+    
+    return float(dist)
     # QHACK #
 
 

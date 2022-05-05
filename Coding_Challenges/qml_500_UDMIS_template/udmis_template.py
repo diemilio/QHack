@@ -24,9 +24,25 @@ def hamiltonian_coeffs_and_obs(graph):
     # QHACK #
 
     # create the Hamiltonian coeffs and obs variables here
-
+    for i in range(num_vertices):
+        coeffs.append(-0.5)
+        coeffs.append(-0.5)
+        obs.append(qml.PauliZ(i))
+        obs.append(qml.Identity(i))
+        
+        for j in range(num_vertices):
+            if E[i,j]:
+                for k in range(4):
+                    coeffs.append(u*0.25)
+                obs.append(qml.PauliZ(i) @ qml.PauliZ(j))
+                obs.append(qml.PauliZ(i) @ qml.Identity(j))
+                obs.append(qml.Identity(i) @ qml.PauliZ(j))
+                obs.append(qml.Identity(i) @ qml.Identity(j))
+                
+    H = qml.Hamiltonian(coeffs, obs)
+    
     # QHACK #
-
+    
     return coeffs, obs
 
 
@@ -67,7 +83,7 @@ def variational_circuit(params, num_vertices):
     # QHACK #
 
     # create your variational circuit here
-
+    qml.StronglyEntanglingLayers(params, wires=range(num_vertices))
     # QHACK #
 
 
@@ -95,8 +111,12 @@ def train_circuit(num_vertices, H):
     # define your trainable parameters and optimizer here
     # change the number of training iterations, `epochs`, if you want to
     # just be aware of the 80s time limit!
-
-    epochs = 500
+    step_size = 0.05
+    num_layers = 4
+    params = 0.1*np.random.randn(num_layers, num_vertices, 3, requires_grad=True)
+    opt = qml.AdamOptimizer(stepsize=step_size)
+    
+    epochs = 100
 
     # QHACK #
 
