@@ -2,7 +2,7 @@
 name: Open Hackathon Final Submission
 about: A template to be used for submitting your final QHack Open Hackathon project
 title: "[ENTRY] Your Project Title"
-labels: submission
+labels: ''
 assignees: ''
 
 ---
@@ -25,4 +25,4 @@ assignees: ''
 
 ### Which challenges/prizes would you like to submit your project for?
 
-*Please list all Open Hackathon challenges/prizes you would like to be considered for. Additional eligibility conditions may apply for specific prizes. See the [Open Hackathon README](https://github.com/XanaduAI/QHack/blob/main/Open_Hackathon.md) for further details.*
+*Please manually list all Open Hackathon challenges/prizes you would like to be considered for. In addition, please label this GitHub issue with all of the challenges you would like to be considered for. Additional eligibility conditions may apply for specific prizes. See the [Open Hackathon README](https://github.com/XanaduAI/QHack/blob/main/Open_Hackathon.md) for further details.*

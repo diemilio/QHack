@@ -16,13 +16,13 @@ See below for challenge topics and additional eligibility criteria. Complete det
 
 Thanks to Amazon Braket you can power up your projects during the QHack Open Hackathon:
 - **$400 in AWS Credits are available for up to 100 teams**: To unlock this Power Up, your team must place in the top 100 of the QHack Coding Challenges at 17h00 ET on Fri, Feb 18.
-- **$2000 in AWS Credits are available for up to 15 teams**: To unlock this Power Up, your team must submit a draft of your QHack Open Hackathon project by 12h00 ET on Wed, Feb 23. Fifteen winners will be selected from the received submissions.
+- **$2000 in AWS Credits are available for up to 15 teams**: To unlock this Power Up, your team must [submit a draft of your QHack Open Hackathon project](https://github.com/XanaduAI/QHack/issues/new?assignees=&labels=AWS+Power+Up&template=open-hackathon-aws-power-up-entry.md&title=%5BAWS+Power+Up%5D+Your+Project+Title) by 12h00 ET on Wed, Feb 23. Fifteen winners will be selected from the received submissions.
 
 **Exclusive access to IBM Quantum machines**
 
  Thanks to IBM Quantum you can power up your projects during the QHack Open Hackathon:
  - **Access to 7-Qubit IBM Quantum machine**: To unlock this Power Up, your team must place in the top 70 of the QHack Coding Challenges at 17h00 ET on Fri, Feb 18.
- - **Access to 16-qubit IBM Quantum machine**: To unlock this Power Up, your team must submit a draft of your QHack Open Hackathon project by 11h59 ET on Tues, Feb 22. Ten winners will be selected from the received submissions.
+ - **Access to 16-qubit IBM Quantum machine**: To unlock this Power Up, your team must [submit a draft of your QHack Open Hackathon project](https://github.com/XanaduAI/QHack/issues/new?assignees=&labels=IBM+Power+UP&template=open-hackathon-ibm-power-up-entry.md&title=%5BIBM+Power+Up%5D+Your+Project+Title) by 11h59 ET on Tues, Feb 22. Ten winners will be selected from the received submissions.
 
 ---
 
@@ -30,7 +30,7 @@ Thanks to Amazon Braket you can power up your projects during the QHack Open Hac
 
 | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
 |---|---|---|---|---|---|---|
-|   | **Feb 21**: Open Hackathon begins | **Feb 22**: Submit draft Open Hackathon project if you want to be considered for access to IBM Quantum's 16-qubit machine (10 teams; must submit before 23h59 ET) | **Feb 23**: Submit draft Open Hackathon project if you want to be considered for $2000 USD in AWS credits (15 teams; must submit before 12h00 ET) |   | **Feb 25** (17h00 ET): Coding Challenge portal closes |  |
+|   | **Feb 21**: Open Hackathon begins | **Feb 22**: Submit draft Open Hackathon project if you want to be considered for access to IBM Quantum's 16-qubit machine (10 teams; must submit before 23h59 ET) | **Feb 23**: Submit draft Open Hackathon project if you want to be considered for $2000 USD in AWS credits (15 teams; must submit before 12h00 ET) |   | **Feb 25** (17h00 ET): Open Hackathon project submissions are due |  |
 
 ---
 ### Challenges
@@ -53,7 +53,7 @@ Sponsored by [Amazon Braket](https://aws.amazon.com/braket/)
 
 **Info**:
 
-Join the Amazon Braket office hours daily from 1 to 2pm PST. Whether you have a question about AWS and Amazon Braket, want to discuss your approach to the Hackathon Challenge, or just want to drop by to say hello and meet the team — we have you covered. The details are posted in the `#amazon-braket-support` channel on the [Xanadu Slack](u.strawberryfields.ai/slack).
+Join the Amazon Braket office hours daily from 1 to 2pm PST. Whether you have a question about AWS and Amazon Braket, want to discuss your approach to the Hackathon Challenge, or just want to drop by to say hello and meet the team — we have you covered. The details are posted in the `#amazon-braket-support` channel on the [Xanadu Slack](https://u.strawberryfields.ai/slack).
 
 ---
 
@@ -102,9 +102,13 @@ Sponsored by [Menten AI](https://www.menten.ai/)
 
 *Best Open Hackathon project applying quantum machine learning to a biotechnology use-case*
 
-**Prize**: 
+**Prize**:
 
-*Virtual paid internship in quantum machine learning* (One internship available)
+One winner will receive a 12-week paid ($14K USD) remote internship at Menten AI as well as an awesome swag package.
+
+**Info**:
+
+For any questions, please reach out directly to alexey.galda@menten.ai
 
 ---
 
@@ -114,7 +118,7 @@ Sponsored by [Google Quantum AI](https://quantumai.google)
 
 **Awarded for**: 
 
-*Best Open Hackathon project which implementats/extends a concept in a Google Quantum AI research paper*
+*Best Open Hackathon project which implements/extends a concept in a Google Quantum AI research paper*
 
 **Prize**: 
 
@@ -191,6 +195,8 @@ Please [register with QunaSys using this form](https://docs.google.com/forms/d/1
 Quantum algorithms for chemistry applications are expanding. We can now calculate the ground-state energy of molecules, excited-states energy, energy derivatives, periodic systems, and so on! With quantum algorithms, we can test wide varieties of industrial applications like reaction path search, photochemical reaction, molecular dynamics, etc.
 
 Coding tool: QunaSys will open their software product Qamuy—Gaussian-like quantum chemistry software—for all participants. You can use it to build chemistry applications easily! Of course, you are welcome to build using Pennylane, Qiskit, Cirq, etc.
+
+For detail please check Youtube video [Introduction to the Quantum Chemistry Challenge hosted by QunaSys](https://www.youtube.com/watch?v=92JQaSEFkxg)
 
 ---
 
@@ -288,7 +294,7 @@ To be eligible for the QSYS program, participants must be enrolled in a secondar
 
 ### How do I take part?
 
-To submit your team's entry for any of these prizes, simply open an Issue on *[this GitHub repo](https://github.com/XanaduAI/QHack/issues/new?assignees=&labels=submission&template=open-hackathon-final-submission.md&title=%5BENTRY%5D+Your+Project+Title)* summarizing your project.
+To submit your team's entry for any of these prizes, simply open an Issue using *[this template](https://github.com/XanaduAI/QHack/issues/new?assignees=&labels=&template=open_hackathon.md&title=%5BENTRY%5D+Your+Project+Title)* summarizing your project.
 Specifically, this issue should contain:
 
 1. The name of your team (if you took part in the [QHack Coding Challenge](Coding_Challenges.md), this name should match the name used there).
